@@ -1,0 +1,1124 @@
+Problem11-6oct.c:66:2: warning: control reaches end of non-void function [-Wreturn-type]
+        }
+        ^
+Problem11-6oct.c:75:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:80:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:89:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:94:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:103:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:108:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:117:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:122:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:131:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:137:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:164:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+Problem11-6oct.c:173:2: warning: control may reach end of non-void function [-Wreturn-type]
+ }
+ ^
+Problem11-6oct.c:174:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+main() {
+^~~~
+14 warnings generated.
+opt: Problem11-6oct.ll: error: Could not open input file: No such file or directory
+KLEE: output directory is "/home/arpita/Documents/TracerX-Work/TX-formatting/klee-out-28"
+Using Z3 solver backend
+KLEE: WARNING: undefined reference to function: fflush
+KLEE: WARNING: undefined reference to function: printf
+KLEE: WARNING: undefined reference to variable: stdout
+KLEE: Subsumption check for Node #1, Program Point 51813832
+KLEE: #1: Check failure due to control point not found in table
+KLEE: WARNING ONCE: calling external: printf(51669904, 1)
+KLEE: Subsumption check for Node #2, Program Point 52652920
+KLEE: #2: Check failure due to control point not found in table
+KLEE: Subsumption check for Node #3, Program Point 52651240
+KLEE: #3: Check failure due to control point not found in table
+KLEE: Storing entry for Node #3, Program Point 52651240
+KLEE: ********** Start of Program Point: 52651240 Block Instructions **********
+
+; <label>:34                                      ; preds = %30, %27, %24, %21, %18, %15, %12, %9, %6, %0
+  %35 = load i32* %input, align 4, !dbg !196
+  %36 = call i32 @calculate_output(i32 %35), !dbg !196
+  %37 = load i32* %2, align 4, !dbg !197
+  store i32 %37, i32* @actualBound, align 4, !dbg !197
+  br label %38, !dbg !198
+
+KLEE: *********************** End of Instructions ******************************************
+
+KLEE: ------------ Subsumption Table Entry ------------
+Program point = 52651240
+global = [creation depth: 2
+address:
+        function/value: @a512217640 = global i32 32, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581408
+        base: 51581408
+        pointer to location object: 52308560
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [errorCheck: Line 60]
+        function/value: errorCheck/  %2 = load i32* @a512217640, align 4, !dbg !192
+        expression: 32
+        pointer to location object: 53743296creation depth: 2
+address:
+        function/value: @a1824730115 = global i32 13, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581520
+        base: 51581520
+        pointer to location object: 52312784
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_outputm40: Line 134]
+        function/value: calculate_outputm40/  %2 = load i32* @a1824730115, align 4, !dbg !192
+        expression: 13
+        pointer to location object: 53736960creation depth: 2
+address:
+        function/value: @a168638684 = global i32 15, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581296
+        base: 51581296
+        pointer to location object: 54214352
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 156]
+        function/value: calculate_output/  %56 = load i32* @a168638684, align 4, !dbg !222
+        expression: 15
+        pointer to location object: 53734144creation depth: 2
+address:
+        function/value: @a1537379265 = global i32 14, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581824
+        base: 51581824
+        pointer to location object: 52309568
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 140]
+        function/value: calculate_output/  %2 = load i32* @a1537379265, align 4, !dbg !193
+        expression: 14
+        pointer to location object: 51748144creation depth: 2
+address:
+        function/value: @cf = global i32 1, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581456
+        base: 51581456
+        pointer to location object: 52309280
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 155]
+        function/value: i32 1
+        expression: 1
+        pointer to location object: 51747616]
+interpolant = (empty)
+concretely-addressed store = []
+symbolically-addressed store = []
+concretely-addressed historical store = []
+symbolically-addressed historical store = []
+existentials = [__shadow__input]
+wp interpolant = [(And (And (And (And (And (Eq 1 (WPVar w32 (d)))
+                          (Not (Eq 33 (WPVar w32 (a512217640)))))
+                     (Not (Eq 6 (WPVar w32 (input)))))
+                (Eq 13 (WPVar w32 (a1824730115))))
+           (Eq 15 (WPVar w32 (a168638684))))
+      (Eq 14 (WPVar w32 (a1537379265))))]
+
+KLEE: Subsumption check for Node #4, Program Point 52650120
+KLEE: #4: Check failure due to control point not found in table
+KLEE: Subsumption check for Node #5, Program Point 52651240
+KLEE: #5=>#3: Global check success
+KLEE: Storing entry for Node #5, Program Point 52651240
+KLEE: ********** Start of Program Point: 52651240 Block Instructions **********
+
+; <label>:34                                      ; preds = %30, %27, %24, %21, %18, %15, %12, %9, %6, %0
+  %35 = load i32* %input, align 4, !dbg !196
+  %36 = call i32 @calculate_output(i32 %35), !dbg !196
+  %37 = load i32* %2, align 4, !dbg !197
+  store i32 %37, i32* @actualBound, align 4, !dbg !197
+  br label %38, !dbg !198
+
+KLEE: *********************** End of Instructions ******************************************
+
+KLEE: ------------ Subsumption Table Entry ------------
+Program point = 52651240
+global = [creation depth: 3
+address:
+        function/value: @a168638684 = global i32 15, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581296
+        base: 51581296
+        pointer to location object: 52310576
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 156]
+        function/value: calculate_output/  %56 = load i32* @a168638684, align 4, !dbg !222
+        expression: 15
+        pointer to location object: 53745408creation depth: 3
+address:
+        function/value: @a512217640 = global i32 32, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581408
+        base: 51581408
+        pointer to location object: 52320464
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [errorCheck: Line 60]
+        function/value: errorCheck/  %2 = load i32* @a512217640, align 4, !dbg !192
+        expression: 32
+        pointer to location object: 52446592creation depth: 3
+address:
+        function/value: @a1537379265 = global i32 14, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581824
+        base: 51581824
+        pointer to location object: 52310096
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 140]
+        function/value: calculate_output/  %2 = load i32* @a1537379265, align 4, !dbg !193
+        expression: 14
+        pointer to location object: 53743648creation depth: 3
+address:
+        function/value: @cf = global i32 1, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581456
+        base: 51581456
+        pointer to location object: 52310816
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 155]
+        function/value: i32 1
+        expression: 1
+        pointer to location object: 53731856creation depth: 3
+address:
+        function/value: @a1824730115 = global i32 13, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581520
+        base: 51581520
+        pointer to location object: 52321760
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_outputm40: Line 134]
+        function/value: calculate_outputm40/  %2 = load i32* @a1824730115, align 4, !dbg !192
+        expression: 13
+        pointer to location object: 53743472]
+interpolant = (empty)
+concretely-addressed store = []
+symbolically-addressed store = []
+concretely-addressed historical store = []
+symbolically-addressed historical store = []
+existentials = [__shadow__input]
+wp interpolant = [(And (And (And (And (And (Eq 1 (WPVar w32 (d)))
+                          (Not (Eq 33 (WPVar w32 (a512217640)))))
+                     (Not (Eq 6 (WPVar w32 (input)))))
+                (Eq 13 (WPVar w32 (a1824730115))))
+           (Eq 15 (WPVar w32 (a168638684))))
+      (Eq 14 (WPVar w32 (a1537379265))))]
+
+KLEE: Subsumption check for Node #6, Program Point 52650232
+KLEE: #6: Check failure due to control point not found in table
+KLEE: Subsumption check for Node #7, Program Point 52651240
+KLEE: #7=>#5: Global check success
+KLEE: #7=>#3: Global check success
+KLEE: Storing entry for Node #7, Program Point 52651240
+KLEE: ********** Start of Program Point: 52651240 Block Instructions **********
+
+; <label>:34                                      ; preds = %30, %27, %24, %21, %18, %15, %12, %9, %6, %0
+  %35 = load i32* %input, align 4, !dbg !196
+  %36 = call i32 @calculate_output(i32 %35), !dbg !196
+  %37 = load i32* %2, align 4, !dbg !197
+  store i32 %37, i32* @actualBound, align 4, !dbg !197
+  br label %38, !dbg !198
+
+KLEE: *********************** End of Instructions ******************************************
+
+KLEE: ------------ Subsumption Table Entry ------------
+Program point = 52651240
+global = [creation depth: 4
+address:
+        function/value: @a1537379265 = global i32 14, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581824
+        base: 51581824
+        pointer to location object: 53708784
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 140]
+        function/value: calculate_output/  %2 = load i32* @a1537379265, align 4, !dbg !193
+        expression: 14
+        pointer to location object: 53745936creation depth: 4
+address:
+        function/value: @a1824730115 = global i32 13, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581520
+        base: 51581520
+        pointer to location object: 52310672
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_outputm40: Line 134]
+        function/value: calculate_outputm40/  %2 = load i32* @a1824730115, align 4, !dbg !192
+        expression: 13
+        pointer to location object: 52449760creation depth: 4
+address:
+        function/value: @a512217640 = global i32 32, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581408
+        base: 51581408
+        pointer to location object: 52305920
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [errorCheck: Line 60]
+        function/value: errorCheck/  %2 = load i32* @a512217640, align 4, !dbg !192
+        expression: 32
+        pointer to location object: 52452400creation depth: 4
+address:
+        function/value: @a168638684 = global i32 15, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581296
+        base: 51581296
+        pointer to location object: 53700672
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 156]
+        function/value: calculate_output/  %56 = load i32* @a168638684, align 4, !dbg !222
+        expression: 15
+        pointer to location object: 53739248creation depth: 4
+address:
+        function/value: @cf = global i32 1, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581456
+        base: 51581456
+        pointer to location object: 53708880
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 155]
+        function/value: i32 1
+        expression: 1
+        pointer to location object: 53747520]
+interpolant = (empty)
+concretely-addressed store = []
+symbolically-addressed store = []
+concretely-addressed historical store = []
+symbolically-addressed historical store = []
+existentials = [__shadow__input]
+wp interpolant = [(And (And (And (And (And (Eq 1 (WPVar w32 (d)))
+                          (Not (Eq 33 (WPVar w32 (a512217640)))))
+                     (Not (Eq 6 (WPVar w32 (input)))))
+                (Eq 13 (WPVar w32 (a1824730115))))
+           (Eq 15 (WPVar w32 (a168638684))))
+      (Eq 14 (WPVar w32 (a1537379265))))]
+
+KLEE: Subsumption check for Node #8, Program Point 52650344
+KLEE: #8: Check failure due to control point not found in table
+KLEE: Subsumption check for Node #9, Program Point 52651240
+KLEE: #9=>#7: Global check success
+KLEE: #9=>#5: Global check success
+KLEE: #9=>#3: Global check success
+KLEE: Storing entry for Node #9, Program Point 52651240
+KLEE: ********** Start of Program Point: 52651240 Block Instructions **********
+
+; <label>:34                                      ; preds = %30, %27, %24, %21, %18, %15, %12, %9, %6, %0
+  %35 = load i32* %input, align 4, !dbg !196
+  %36 = call i32 @calculate_output(i32 %35), !dbg !196
+  %37 = load i32* %2, align 4, !dbg !197
+  store i32 %37, i32* @actualBound, align 4, !dbg !197
+  br label %38, !dbg !198
+
+KLEE: *********************** End of Instructions ******************************************
+
+KLEE: ------------ Subsumption Table Entry ------------
+Program point = 52651240
+global = [creation depth: 5
+address:
+        function/value: @cf = global i32 1, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581456
+        base: 51581456
+        pointer to location object: 53702640
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 155]
+        function/value: i32 1
+        expression: 1
+        pointer to location object: 53733088creation depth: 5
+address:
+        function/value: @a1824730115 = global i32 13, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581520
+        base: 51581520
+        pointer to location object: 53701968
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_outputm40: Line 134]
+        function/value: calculate_outputm40/  %2 = load i32* @a1824730115, align 4, !dbg !192
+        expression: 13
+        pointer to location object: 52451520creation depth: 5
+address:
+        function/value: @a1537379265 = global i32 14, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581824
+        base: 51581824
+        pointer to location object: 53709456
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 140]
+        function/value: calculate_output/  %2 = load i32* @a1537379265, align 4, !dbg !193
+        expression: 14
+        pointer to location object: 53737664creation depth: 5
+address:
+        function/value: @a168638684 = global i32 15, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581296
+        base: 51581296
+        pointer to location object: 53707008
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 156]
+        function/value: calculate_output/  %56 = load i32* @a168638684, align 4, !dbg !222
+        expression: 15
+        pointer to location object: 53746992creation depth: 5
+address:
+        function/value: @a512217640 = global i32 32, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581408
+        base: 51581408
+        pointer to location object: 53709792
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [errorCheck: Line 60]
+        function/value: errorCheck/  %2 = load i32* @a512217640, align 4, !dbg !192
+        expression: 32
+        pointer to location object: 52451872]
+interpolant = (empty)
+concretely-addressed store = []
+symbolically-addressed store = []
+concretely-addressed historical store = []
+symbolically-addressed historical store = []
+existentials = [__shadow__input]
+wp interpolant = [(And (And (And (And (And (Eq 1 (WPVar w32 (d)))
+                          (Not (Eq 33 (WPVar w32 (a512217640)))))
+                     (Not (Eq 6 (WPVar w32 (input)))))
+                (Eq 13 (WPVar w32 (a1824730115))))
+           (Eq 15 (WPVar w32 (a168638684))))
+      (Eq 14 (WPVar w32 (a1537379265))))]
+
+KLEE: Subsumption check for Node #10, Program Point 52650456
+KLEE: #10: Check failure due to control point not found in table
+KLEE: Subsumption check for Node #11, Program Point 52651240
+KLEE: #11=>#9: Global check success
+KLEE: #11=>#7: Global check success
+KLEE: #11=>#5: Global check success
+KLEE: #11=>#3: Global check success
+KLEE: Storing entry for Node #11, Program Point 52651240
+KLEE: ********** Start of Program Point: 52651240 Block Instructions **********
+
+; <label>:34                                      ; preds = %30, %27, %24, %21, %18, %15, %12, %9, %6, %0
+  %35 = load i32* %input, align 4, !dbg !196
+  %36 = call i32 @calculate_output(i32 %35), !dbg !196
+  %37 = load i32* %2, align 4, !dbg !197
+  store i32 %37, i32* @actualBound, align 4, !dbg !197
+  br label %38, !dbg !198
+
+KLEE: *********************** End of Instructions ******************************************
+
+KLEE: ------------ Subsumption Table Entry ------------
+Program point = 52651240
+global = [creation depth: 6
+address:
+        function/value: @cf = global i32 1, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581456
+        base: 51581456
+        pointer to location object: 55063952
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 155]
+        function/value: i32 1
+        expression: 1
+        pointer to location object: 53732736creation depth: 6
+address:
+        function/value: @a1824730115 = global i32 13, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581520
+        base: 51581520
+        pointer to location object: 55061984
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_outputm40: Line 134]
+        function/value: calculate_outputm40/  %2 = load i32* @a1824730115, align 4, !dbg !192
+        expression: 13
+        pointer to location object: 53734320creation depth: 6
+address:
+        function/value: @a512217640 = global i32 32, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581408
+        base: 51581408
+        pointer to location object: 53707152
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [errorCheck: Line 60]
+        function/value: errorCheck/  %2 = load i32* @a512217640, align 4, !dbg !192
+        expression: 32
+        pointer to location object: 55044512creation depth: 6
+address:
+        function/value: @a1537379265 = global i32 14, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581824
+        base: 51581824
+        pointer to location object: 55063808
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 140]
+        function/value: calculate_output/  %2 = load i32* @a1537379265, align 4, !dbg !193
+        expression: 14
+        pointer to location object: 53740832creation depth: 6
+address:
+        function/value: @a168638684 = global i32 15, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581296
+        base: 51581296
+        pointer to location object: 55067600
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 156]
+        function/value: calculate_output/  %56 = load i32* @a168638684, align 4, !dbg !222
+        expression: 15
+        pointer to location object: 52445712]
+interpolant = (empty)
+concretely-addressed store = []
+symbolically-addressed store = []
+concretely-addressed historical store = []
+symbolically-addressed historical store = []
+existentials = [__shadow__input]
+wp interpolant = [(And (And (And (And (And (Eq 1 (WPVar w32 (d)))
+                          (Not (Eq 33 (WPVar w32 (a512217640)))))
+                     (Not (Eq 6 (WPVar w32 (input)))))
+                (Eq 13 (WPVar w32 (a1824730115))))
+           (Eq 15 (WPVar w32 (a168638684))))
+      (Eq 14 (WPVar w32 (a1537379265))))]
+
+KLEE: Subsumption check for Node #12, Program Point 52650568
+KLEE: #12: Check failure due to control point not found in table
+KLEE: Subsumption check for Node #13, Program Point 52651240
+KLEE: #13=>#11: Global check success
+KLEE: #13=>#9: Global check success
+KLEE: #13=>#7: Global check success
+KLEE: #13=>#5: Global check success
+KLEE: #13=>#3: Global check success
+KLEE: WARNING ONCE: calling external: fflush(140053437761056)
+Iteration 1
+>>> Doing Dummyode 1 times
+Doing Dummycode once (d = 1)
+21
+KLEE: Storing entry for Node #13, Program Point 52651240
+KLEE: ********** Start of Program Point: 52651240 Block Instructions **********
+
+; <label>:34                                      ; preds = %30, %27, %24, %21, %18, %15, %12, %9, %6, %0
+  %35 = load i32* %input, align 4, !dbg !196
+  %36 = call i32 @calculate_output(i32 %35), !dbg !196
+  %37 = load i32* %2, align 4, !dbg !197
+  store i32 %37, i32* @actualBound, align 4, !dbg !197
+  br label %38, !dbg !198
+
+KLEE: *********************** End of Instructions ******************************************
+
+KLEE: ------------ Subsumption Table Entry ------------
+Program point = 52651240
+global = [creation depth: 7
+address:
+        function/value: @cf = global i32 1, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581456
+        base: 51581456
+        pointer to location object: 55069424
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 155]
+        function/value: i32 1
+        expression: 1
+        pointer to location object: 52457152creation depth: 7
+address:
+        function/value: @a1824730115 = global i32 13, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581520
+        base: 51581520
+        pointer to location object: 55067984
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_outputm40: Line 134]
+        function/value: calculate_outputm40/  %2 = load i32* @a1824730115, align 4, !dbg !192
+        expression: 13
+        pointer to location object: 55048912creation depth: 7
+address:
+        function/value: @a1537379265 = global i32 14, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581824
+        base: 51581824
+        pointer to location object: 55060688
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 140]
+        function/value: calculate_output/  %2 = load i32* @a1537379265, align 4, !dbg !193
+        expression: 14
+        pointer to location object: 52450640creation depth: 7
+address:
+        function/value: @a168638684 = global i32 15, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581296
+        base: 51581296
+        pointer to location object: 55070336
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 156]
+        function/value: calculate_output/  %56 = load i32* @a168638684, align 4, !dbg !222
+        expression: 15
+        pointer to location object: 53734496creation depth: 7
+address:
+        function/value: @a512217640 = global i32 32, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581408
+        base: 51581408
+        pointer to location object: 55062848
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [errorCheck: Line 60]
+        function/value: errorCheck/  %2 = load i32* @a512217640, align 4, !dbg !192
+        expression: 32
+        pointer to location object: 55053840]
+interpolant = (empty)
+concretely-addressed store = []
+symbolically-addressed store = []
+concretely-addressed historical store = []
+symbolically-addressed historical store = []
+existentials = [__shadow__input]
+wp interpolant = [(And (And (And (And (And (Eq 1 (WPVar w32 (d)))
+                          (Not (Eq 33 (WPVar w32 (a512217640)))))
+                     (Eq 6 (WPVar w32 (input))))
+                (Eq 13 (WPVar w32 (a1824730115))))
+           (Eq 15 (WPVar w32 (a168638684))))
+      (Eq 14 (WPVar w32 (a1537379265))))]
+
+KLEE: Subsumption check for Node #14, Program Point 52650680
+KLEE: #14: Check failure due to control point not found in table
+KLEE: Subsumption check for Node #15, Program Point 52651240
+KLEE: #15=>#13: Global check success
+KLEE: #15=>#11: Global check success
+KLEE: #15=>#9: Global check success
+KLEE: #15=>#7: Global check success
+KLEE: #15=>#5: Global check success
+KLEE: #15=>#3: Global check success
+KLEE: Storing entry for Node #15, Program Point 52651240
+KLEE: ********** Start of Program Point: 52651240 Block Instructions **********
+
+; <label>:34                                      ; preds = %30, %27, %24, %21, %18, %15, %12, %9, %6, %0
+  %35 = load i32* %input, align 4, !dbg !196
+  %36 = call i32 @calculate_output(i32 %35), !dbg !196
+  %37 = load i32* %2, align 4, !dbg !197
+  store i32 %37, i32* @actualBound, align 4, !dbg !197
+  br label %38, !dbg !198
+
+KLEE: *********************** End of Instructions ******************************************
+
+KLEE: ------------ Subsumption Table Entry ------------
+Program point = 52651240
+global = [creation depth: 8
+address:
+        function/value: @a512217640 = global i32 32, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581408
+        base: 51581408
+        pointer to location object: 55136576
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [errorCheck: Line 60]
+        function/value: errorCheck/  %2 = load i32* @a512217640, align 4, !dbg !192
+        expression: 32
+        pointer to location object: 55057888creation depth: 8
+address:
+        function/value: @a1537379265 = global i32 14, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581824
+        base: 51581824
+        pointer to location object: 55060064
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 140]
+        function/value: calculate_output/  %2 = load i32* @a1537379265, align 4, !dbg !193
+        expression: 14
+        pointer to location object: 55042224creation depth: 8
+address:
+        function/value: @a168638684 = global i32 15, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581296
+        base: 51581296
+        pointer to location object: 55073744
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 156]
+        function/value: calculate_output/  %56 = load i32* @a168638684, align 4, !dbg !222
+        expression: 15
+        pointer to location object: 55050848creation depth: 8
+address:
+        function/value: @cf = global i32 1, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581456
+        base: 51581456
+        pointer to location object: 55064720
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 155]
+        function/value: i32 1
+        expression: 1
+        pointer to location object: 55049968creation depth: 8
+address:
+        function/value: @a1824730115 = global i32 13, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581520
+        base: 51581520
+        pointer to location object: 55139312
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_outputm40: Line 134]
+        function/value: calculate_outputm40/  %2 = load i32* @a1824730115, align 4, !dbg !192
+        expression: 13
+        pointer to location object: 55054192]
+interpolant = (empty)
+concretely-addressed store = []
+symbolically-addressed store = []
+concretely-addressed historical store = []
+symbolically-addressed historical store = []
+existentials = [__shadow__input]
+wp interpolant = [(And (And (And (And (And (Eq 1 (WPVar w32 (d)))
+                          (Not (Eq 33 (WPVar w32 (a512217640)))))
+                     (Not (Eq 6 (WPVar w32 (input)))))
+                (Eq 13 (WPVar w32 (a1824730115))))
+           (Eq 15 (WPVar w32 (a168638684))))
+      (Eq 14 (WPVar w32 (a1537379265))))]
+
+KLEE: Subsumption check for Node #16, Program Point 52650792
+KLEE: #16: Check failure due to control point not found in table
+KLEE: Subsumption check for Node #17, Program Point 52651240
+KLEE: #17=>#15: Global check success
+KLEE: #17=>#13: Global check success
+KLEE: #17=>#11: Global check success
+KLEE: #17=>#9: Global check success
+KLEE: #17=>#7: Global check success
+KLEE: #17=>#5: Global check success
+KLEE: #17=>#3: Global check success
+KLEE: Storing entry for Node #17, Program Point 52651240
+KLEE: ********** Start of Program Point: 52651240 Block Instructions **********
+
+; <label>:34                                      ; preds = %30, %27, %24, %21, %18, %15, %12, %9, %6, %0
+  %35 = load i32* %input, align 4, !dbg !196
+  %36 = call i32 @calculate_output(i32 %35), !dbg !196
+  %37 = load i32* %2, align 4, !dbg !197
+  store i32 %37, i32* @actualBound, align 4, !dbg !197
+  br label %38, !dbg !198
+
+KLEE: *********************** End of Instructions ******************************************
+
+KLEE: ------------ Subsumption Table Entry ------------
+Program point = 52651240
+global = [creation depth: 9
+address:
+        function/value: @a512217640 = global i32 32, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581408
+        base: 51581408
+        pointer to location object: 55145120
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [errorCheck: Line 60]
+        function/value: errorCheck/  %2 = load i32* @a512217640, align 4, !dbg !192
+        expression: 32
+        pointer to location object: 55204208creation depth: 9
+address:
+        function/value: @a1537379265 = global i32 14, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581824
+        base: 51581824
+        pointer to location object: 55073552
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 140]
+        function/value: calculate_output/  %2 = load i32* @a1537379265, align 4, !dbg !193
+        expression: 14
+        pointer to location object: 55042928creation depth: 9
+address:
+        function/value: @a1824730115 = global i32 13, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581520
+        base: 51581520
+        pointer to location object: 55063184
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_outputm40: Line 134]
+        function/value: calculate_outputm40/  %2 = load i32* @a1824730115, align 4, !dbg !192
+        expression: 13
+        pointer to location object: 52459088creation depth: 9
+address:
+        function/value: @a168638684 = global i32 15, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581296
+        base: 51581296
+        pointer to location object: 55148288
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 156]
+        function/value: calculate_output/  %56 = load i32* @a168638684, align 4, !dbg !222
+        expression: 15
+        pointer to location object: 55047680creation depth: 9
+address:
+        function/value: @cf = global i32 1, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581456
+        base: 51581456
+        pointer to location object: 55063856
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 155]
+        function/value: i32 1
+        expression: 1
+        pointer to location object: 55051376]
+interpolant = (empty)
+concretely-addressed store = []
+symbolically-addressed store = []
+concretely-addressed historical store = []
+symbolically-addressed historical store = []
+existentials = [__shadow__input]
+wp interpolant = [(And (And (And (And (And (Eq 1 (WPVar w32 (d)))
+                          (Not (Eq 33 (WPVar w32 (a512217640)))))
+                     (Not (Eq 6 (WPVar w32 (input)))))
+                (Eq 13 (WPVar w32 (a1824730115))))
+           (Eq 15 (WPVar w32 (a168638684))))
+      (Eq 14 (WPVar w32 (a1537379265))))]
+
+KLEE: Subsumption check for Node #18, Program Point 52650904
+KLEE: #18: Check failure due to control point not found in table
+KLEE: Subsumption check for Node #19, Program Point 52651240
+KLEE: #19=>#17: Global check success
+KLEE: #19=>#15: Global check success
+KLEE: #19=>#13: Global check success
+KLEE: #19=>#11: Global check success
+KLEE: #19=>#9: Global check success
+KLEE: #19=>#7: Global check success
+KLEE: #19=>#5: Global check success
+KLEE: #19=>#3: Global check success
+KLEE: Storing entry for Node #19, Program Point 52651240
+KLEE: ********** Start of Program Point: 52651240 Block Instructions **********
+
+; <label>:34                                      ; preds = %30, %27, %24, %21, %18, %15, %12, %9, %6, %0
+  %35 = load i32* %input, align 4, !dbg !196
+  %36 = call i32 @calculate_output(i32 %35), !dbg !196
+  %37 = load i32* %2, align 4, !dbg !197
+  store i32 %37, i32* @actualBound, align 4, !dbg !197
+  br label %38, !dbg !198
+
+KLEE: *********************** End of Instructions ******************************************
+
+KLEE: ------------ Subsumption Table Entry ------------
+Program point = 52651240
+global = [creation depth: 10
+address:
+        function/value: @a1537379265 = global i32 14, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581824
+        base: 51581824
+        pointer to location object: 55146368
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 140]
+        function/value: calculate_output/  %2 = load i32* @a1537379265, align 4, !dbg !193
+        expression: 14
+        pointer to location object: 52458384creation depth: 10
+address:
+        function/value: @cf = global i32 1, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581456
+        base: 51581456
+        pointer to location object: 55142192
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 155]
+        function/value: i32 1
+        expression: 1
+        pointer to location object: 55051552creation depth: 10
+address:
+        function/value: @a1824730115 = global i32 13, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581520
+        base: 51581520
+        pointer to location object: 55242800
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_outputm40: Line 134]
+        function/value: calculate_outputm40/  %2 = load i32* @a1824730115, align 4, !dbg !192
+        expression: 13
+        pointer to location object: 55205968creation depth: 10
+address:
+        function/value: @a168638684 = global i32 15, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581296
+        base: 51581296
+        pointer to location object: 52315568
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [calculate_output: Line 156]
+        function/value: calculate_output/  %56 = load i32* @a168638684, align 4, !dbg !222
+        expression: 15
+        pointer to location object: 55207728creation depth: 10
+address:
+        function/value: @a512217640 = global i32 32, align 4
+        stack: (empty)
+        offset: 0
+        address: 51581408
+        base: 51581408
+        pointer to location object: 55244144
+        concrete offset bound: 4
+        size: 4
+content:
+        a right interpolant value:
+                branch infeasibility [errorCheck: Line 60]
+        function/value: errorCheck/  %2 = load i32* @a512217640, align 4, !dbg !192
+        expression: 32
+        pointer to location object: 53734848]
+interpolant = (empty)
+concretely-addressed store = []
+symbolically-addressed store = []
+concretely-addressed historical store = []
+symbolically-addressed historical store = []
+existentials = [__shadow__input]
+wp interpolant = [(And (And (And (And (And (Eq 1 (WPVar w32 (d)))
+                          (Not (Eq 33 (WPVar w32 (a512217640)))))
+                     (Not (Eq 6 (WPVar w32 (input)))))
+                (Eq 13 (WPVar w32 (a1824730115))))
+           (Eq 15 (WPVar w32 (a168638684))))
+      (Eq 14 (WPVar w32 (a1537379265))))]
+
+KLEE: Subsumption check for Node #20, Program Point 52651016
+KLEE: #20: Check failure due to control point not found in table
+KLEE: HaltTimer invoked
+KLEE: halting execution, dumping remaining states
+************Basic Block Coverage Report Starts****************
+KLEE: done: Total number of single time Visited Basic Blocks: 46
+KLEE: done: Total number of Basic Blocks: 115
+************Basic Block Coverage Report Ends****************
+************ICMP/Atomic Condition Coverage Report Starts****************
+KLEE: done: Total number of Covered ICMP/Atomic Condition: 29
+KLEE: done: Total number of All ICMP/Atomic Condition: 69
+************ICMP/Atomic Condition Coverage Report Ends****************
+KLEE: Memory cap NOT exceeded!
+
+KLEE: done: Total reduced symbolic execution tree nodes = 21
+KLEE: done: Total number of visited basic blocks = 234
+
+KLEE: done: Subsumption statistics
+KLEE: done:     Time for actual solver calls in subsumption check (ms) = 0
+KLEE: done:     Number of solver calls for subsumption check (failed) = 0 (0)
+KLEE: done:     Concrete store expression build time (ms) = 0
+KLEE: done:     Symbolic store expression build time (ms) = 0
+KLEE: done:     Solver access time (ms) = 0
+KLEE: done:     Average table entries per subsumption checkpoint = 9.00
+KLEE: done:     Number of subsumption checks = 20
+KLEE: done:     Average solver calls per subsumption check = 0.00
+
+KLEE: done: TxTree method execution times (ms):
+KLEE: done:     setCurrentINode = 4.278
+KLEE: done:     remove = 4732.56
+KLEE: done:     subsumptionCheck = 16.642
+KLEE: done:     markPathCondition = 10.787
+KLEE: done:     split = 0.895
+KLEE: done:     executeOnNode = 20.068
+KLEE: done:     executeMemoryOperation = 25.727
+
+KLEE: done: TxTreeNode method execution times (ms):
+KLEE: done:     getInterpolant = 1.581
+KLEE: done:     get WP Interpolant = 4546.83
+KLEE: done:     addConstraintTime = 2.935
+KLEE: done:     splitTime = 0.61
+KLEE: done:     execute = 19.208
+KLEE: done:     bindCallArguments = 0.494
+KLEE: done:     bindReturnValue = 0.42
+KLEE: done:     getStoredExpressions = 0.183
+KLEE: done:     getStoredCoreExpressions = 2.144
+
+KLEE: done: total instructions = 902
+KLEE: done: completed paths = 11, among which
+KLEE: done:     early-terminating paths (instruction time limit, solver timeout, max-depth reached) = 2
+KLEE: done:     average branching depth of completed paths = 5.90909
+KLEE: done:     average branching depth of subsumed paths = 0
+KLEE: done:     average instructions of completed paths = 122.455
+KLEE: done:     average instructions of subsumed paths = 0
+KLEE: done:     subsumed paths = 0
+KLEE: done:     error paths = 0
+KLEE: done:     program exit paths = 9
+KLEE: done: generated tests = 11, among which
+KLEE: done:     early-terminating tests (instruction time limit, solver timeout, max-depth reached) = 2
+KLEE: done:     error tests = 0
+KLEE: done:     program exit tests = 9
+
+KLEE: done: NOTE:
+KLEE: done:     Subsumed paths / tests counts are nondeterministic for
+KLEE: done:     programs with dynamically-allocated memory such as those
+KLEE: done:     using malloc, since KLEE may reuse the address of the
+KLEE: done:     same malloc calls in different paths. This nondeterminism
+KLEE: done:     does not cause loss of error reports.
+Problem11-6oct
+mkdir: cannot create directory ‘Problem11-6oct-3’: File exists
+mv: cannot move 'klee-out-0' to 'Problem11-6oct-3/klee-out-0': Directory not empty
+------------------------------------------------------------------------------------------
+|           Path            |  Instrs|  Time(s)|  ICov(%)|  BCov(%)|  ICount|  TSolver(%)|
+------------------------------------------------------------------------------------------
+|Problem11-6oct-3/klee-out-0|   19879|     5.03|    49.40|    39.22|     664|        1.13|
+------------------------------------------------------------------------------------------
