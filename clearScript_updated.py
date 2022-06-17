@@ -73,7 +73,7 @@ def WP_Simplification(wpinterpolant):
     return "Simplified::["+str(final_pred+"]")
 
 InputFile1 = open(sys.argv[1], "r")
-OutputFile1 = open("TX-FormattedOutput.txt", "w") 
+OutputFile1 = open("TX-FormattedOutput"+str(sys.argv[1])+".txt", "w") 
 
 setStack=0
 setStartNodeVal=0
@@ -84,9 +84,6 @@ setConAddress=0
 setConContent=0
 setConGlobal=0
 setConLocal=0
-
-prgmPtBlkId={}
-pgrpt_name=0
 for i in InputFile1:
 #    print i
 #==============================================================================
@@ -142,18 +139,14 @@ for i in InputFile1:
         setGlobalStart=0        
     elif "KLEE: ********** Start of Program Point" in i:
 #        print(i.split(":")[2])
-        pgrpt_name=str(i.split(":")[2].split("Block")[0]).strip()
         newstate1="\n********** Block Label and Predecessor of Program Point:"+str(i.split(":")[2].split("Block")[0])+" **********\n";
         OutputFile1.write(newstate1)
         if setStartNodeVal==1:
             OutputFile1.write("\nThis is the start block (Node #1)")
             setStartNodeVal=0
-            prgmPtBlkId[pgrpt_name]="(Node #1)"
     elif "; <label>:" in i and "; preds =" in i:
         newstate2=str(i.split("                         ")[0].split(";")[1])+str(i.split("                         ")[1])
 #        print(newstate2)
-        if pgrpt_name not in prgmPtBlkId:
-            prgmPtBlkId[pgrpt_name]=i.split(";")[1].strip()
         OutputFile1.write(""+newstate2+"")
     elif "KLEE: *********************** End of Instructions ******************************************" in i:
         OutputFile1.write("*****************************************************************************")
@@ -182,8 +175,8 @@ for i in InputFile1:
 
 OutputFile1.close()
 
-InputFile2 = open("TX-FormattedOutput.txt")
-OutputFile2 = open("TX-ReadableFormattedOutput.txt", "w")  
+InputFile2 = open("TX-FormattedOutput"+str(sys.argv[1])+".txt", "r") 
+OutputFile2 = open("TX-ReadableFormattedOutput"+str(sys.argv[1])+".txt", "w")  
 
 countFV=0
 wp=0
@@ -252,7 +245,7 @@ for interpolant in prgm_pt_dict:
 #     print(interpolant,prgm_pt_dict[interpolant])
 #     print(type(prgm_pt_dict[interpolant]))
 #==============================================================================
-    print("Program Point: "+str(interpolant)+" has the following "+str(len(prgm_pt_dict[interpolant]))+" interpolant(s) and corresponding Block Identifier is "+str(prgmPtBlkId[interpolant]))
+    print("Program Point: "+str(interpolant)+" has the following "+str(len(prgm_pt_dict[interpolant]))+" interpolant(s):")
     OutputFile2.write("Program Point: "+str(interpolant)+" has the following "+str(len(prgm_pt_dict[interpolant]))+" interpolant(s):\n")
     if len(prgm_pt_dict[interpolant])==1:
         if "Simplified::" in prgm_pt_dict[interpolant][0]:
@@ -295,6 +288,4 @@ for interpolant in prgm_pt_dict:
                                 OutputFile2.write(uni_inter.replace("wp interpolant =",  "wp interpolant-"+str(uni_index)+"=")+"\n")
         print("******************************************************************")
         OutputFile2.write("******************************************************************\n")
-
-
-print(prgmPtBlkId)           
+            
