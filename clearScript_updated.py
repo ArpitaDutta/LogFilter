@@ -1,23 +1,85 @@
 import re
 import sys
+from collections import deque
+ 
 
 
+alias_dict_init={}
 alias_dict={}
 prgm_pt_dict={}
 pst_pp=0
+
+
+def Find_Extension(Sub_part):
+    stack=deque()
+    for i in range(0,len(Sub_part)):
+        if "(" in Sub_part[i]:
+            stack.append("(")
+        if ")" in Sub_part[i]:
+            stack.pop()
+        if len(stack)==0:
+            return Sub_part[0:i+1]
 def WP_Simplification(wpinterpolant):
-    wpinterpolant=wpinterpolant.replace("WPVar w32 ","").replace("w32 ","").replace("((","").replace(")))","))")
+    print(wpinterpolant+"\n")
+    wpinterpolant=wpinterpolant.replace("WPVar w32 ","").replace("w32 ","")#.replace("((","").replace(")))","))")
+    print(wpinterpolant+"\n")
+    w_cell1=wpinterpolant.split(":((")
+    new_wp_string=str(w_cell1[0])
+    for each1 in range(1,len(w_cell1)):
+        new_wp_string+=":";
+        each11=re.search("\)\)", w_cell1[each1])
+        print(each11.span())
+        get11=each11.span()
+        print(get11)
     wpinterpolant1=wpinterpolant.split(":")
+    print(wpinterpolant1)
+    lastcell=""
+    for cell1 in wpinterpolant1:
+        if "(" not in cell1[0] and "[" not in cell1[0]:
+            if(re.search("N[0-9][0-9]*", lastcell)):
+                keyCell=lastcell
+                lastcell=cell1.split(" ")[-1]
+                print (keyCell,cell1.split(")")[0])
+                alias_dict_init[keyCell.strip()]=cell1.split(")")[0].strip()
+            else:
+                keyCell=lastcell
+                lastcell=cell1.split(" ")[-1]
+        else:             
+                keyCell=lastcell
+                lastcell=cell1.split(" ")[-1]
+                
+    for cell2 in alias_dict_init:
+            if cell2+":" in wpinterpolant:
+                wpinterpolant=wpinterpolant.replace(cell2+":","")
+            if cell2.strip()+")" in wpinterpolant:
+                wpinterpolant=wpinterpolant.replace(cell2+")",alias_dict_init[cell2])
+               
+# =============================================================================
+#     regExp = re.findall(r"\(([A-Za-z0-9_ ())]+)\)", "(Not (Eq 6 a32)(Eq 7 a112)(Not (Eq 3 a188)(Not (Eq 5 a146)(Not (Eq 11 a164))))");
+#     
+#     print (regExp)findall('\(.*?\)'
+# =============================================================================
+    print(wpinterpolant)
+    wp_second_list= wpinterpolant.split(":")
+    for cell3 in wp_second_list:
+        print(cell3)
+        if "[" in cell3:
+            continue
+        else:
+            print("--->", Find_Extension(cell3))            
+            print("\n")
+        #print(regExp)
+    
+    print(wpinterpolant)          
     wpinterpolant_ex=""
     for parts in wpinterpolant1:
         parts_minute=parts.split(" ")
-        xd=re.search("N[0-9]*", parts_minute[-1])
         if re.search("N[0-9]*", parts_minute[-1]):
             wpinterpolant_ex=wpinterpolant_ex+parts[0:len(parts)]            
         else:
             wpinterpolant_ex=wpinterpolant_ex+parts
         
-    #print("********"+wpinterpolant_ex+"********\n")
+    print("********"+wpinterpolant_ex+"********\n")
     if ":" in wpinterpolant:
         key_list=[]
         values_list=[]
@@ -233,59 +295,62 @@ for j in InputFile2:
     else:
         OutputFile2.write(j)
 
-OutputFile2.write("\n\n")
-OutputFile2.write("===============================================================\n")
-print("===============================================================")
-print("List of Program points and their corresponding interpolants.")
-OutputFile2.write("List of Program points and their corresponding interpolants.\n")
-print("===============================================================")
-OutputFile2.write("===============================================================\n")
-for interpolant in prgm_pt_dict:
-#==============================================================================
-#     print(interpolant,prgm_pt_dict[interpolant])
-#     print(type(prgm_pt_dict[interpolant]))
-#==============================================================================
-    print("Program Point: "+str(interpolant)+" has the following "+str(len(prgm_pt_dict[interpolant]))+" interpolant(s):")
-    OutputFile2.write("Program Point: "+str(interpolant)+" has the following "+str(len(prgm_pt_dict[interpolant]))+" interpolant(s):\n")
-    if len(prgm_pt_dict[interpolant])==1:
-        if "Simplified::" in prgm_pt_dict[interpolant][0]:
-            print(prgm_pt_dict[interpolant][0].replace("Simplified::", "wp interpolant-1="))
-            OutputFile2.write(prgm_pt_dict[interpolant][0].replace("Simplified::", "wp interpolant-1=")+"\n")
-            print("---------------------------------------------------------------")
-            OutputFile2.write("---------------------------------------------------------------\n")
-        else:
-            print(prgm_pt_dict[interpolant][0].replace("wp interpolant =", "wp interpolant-1="))
-            OutputFile2.write(prgm_pt_dict[interpolant][0].replace("wp interpolant =", "wp interpolant-1=")+"\n")
-            print("---------------------------------------------------------------")
-            OutputFile2.write("---------------------------------------------------------------\n")
-    else:
-        for inter in range(0, len(prgm_pt_dict[interpolant])):
-            if "Simplified::" in prgm_pt_dict[interpolant][inter]:
-                print(prgm_pt_dict[interpolant][inter].replace("Simplified::", "wp interpolant-"+str(inter+1)+"="))
-                OutputFile2.write(prgm_pt_dict[interpolant][inter].replace("Simplified::", "wp interpolant-"+str(inter+1)+"=")+"\n")
-            else:
-                print(prgm_pt_dict[interpolant][inter].replace("wp interpolant =",  "wp interpolant-"+str(inter+1)+"="))
-                OutputFile2.write(prgm_pt_dict[interpolant][inter].replace("wp interpolant =",  "wp interpolant-"+str(inter+1)+"=")+"\n")
-        print("---------------------------------------------------------------")
-        OutputFile2.write("---------------------------------------------------------------\n")
-        unique_interpolant=set(prgm_pt_dict[interpolant])
-#        print(unique_interpolant)
-        print("******************************************************************")
-        OutputFile2.write("******************************************************************\n")
-        print("The number of unique interpolants for program point: "+str(interpolant)+" is "+str(len(unique_interpolant)))
-        OutputFile2.write("The number of unique interpolants for program point: "+str(interpolant)+" is "+str(len(unique_interpolant)))
-        if len(unique_interpolant)!= len(prgm_pt_dict[interpolant]):
-                print("The Unique Interpolants are:")
-                OutputFile2.write("The Unique Interpolants are:\n")
-                uni_index=0
-                for uni_inter in unique_interpolant:
-                            uni_index=uni_index+1
-                            if "Simplified::" in uni_inter:
-                                print(uni_inter.replace("Simplified::", "wp interpolant-"+str(uni_index)+"="))
-                                OutputFile2.write(uni_inter.replace("Simplified::", "wp interpolant-"+str(uni_index)+"=")+"\n")
-                            else:
-                                print(uni_inter.replace("wp interpolant =",  "wp interpolant-"+str(uni_index)+"="))
-                                OutputFile2.write(uni_inter.replace("wp interpolant =",  "wp interpolant-"+str(uni_index)+"=")+"\n")
-        print("******************************************************************")
-        OutputFile2.write("******************************************************************\n")
-            
+# =============================================================================
+# OutputFile2.write("\n\n")
+# OutputFile2.write("===============================================================\n")
+# print("===============================================================")
+# print("List of Program points and their corresponding interpolants.")
+# OutputFile2.write("List of Program points and their corresponding interpolants.\n")
+# print("===============================================================")
+# OutputFile2.write("===============================================================\n")
+# for interpolant in prgm_pt_dict:
+# #==============================================================================
+# #     print(interpolant,prgm_pt_dict[interpolant])
+# #     print(type(prgm_pt_dict[interpolant]))
+# #==============================================================================
+#     print("Program Point: "+str(interpolant)+" has the following "+str(len(prgm_pt_dict[interpolant]))+" interpolant(s):")
+#     OutputFile2.write("Program Point: "+str(interpolant)+" has the following "+str(len(prgm_pt_dict[interpolant]))+" interpolant(s):\n")
+#     if len(prgm_pt_dict[interpolant])==1:
+#         if "Simplified::" in prgm_pt_dict[interpolant][0]:
+#             print(prgm_pt_dict[interpolant][0].replace("Simplified::", "wp interpolant-1="))
+#             OutputFile2.write(prgm_pt_dict[interpolant][0].replace("Simplified::", "wp interpolant-1=")+"\n")
+#             print("---------------------------------------------------------------")
+#             OutputFile2.write("---------------------------------------------------------------\n")
+#         else:
+#             print(prgm_pt_dict[interpolant][0].replace("wp interpolant =", "wp interpolant-1="))
+#             OutputFile2.write(prgm_pt_dict[interpolant][0].replace("wp interpolant =", "wp interpolant-1=")+"\n")
+#             print("---------------------------------------------------------------")
+#             OutputFile2.write("---------------------------------------------------------------\n")
+#     else:
+#         for inter in range(0, len(prgm_pt_dict[interpolant])):
+#             if "Simplified::" in prgm_pt_dict[interpolant][inter]:
+#                 print(prgm_pt_dict[interpolant][inter].replace("Simplified::", "wp interpolant-"+str(inter+1)+"="))
+#                 OutputFile2.write(prgm_pt_dict[interpolant][inter].replace("Simplified::", "wp interpolant-"+str(inter+1)+"=")+"\n")
+#             else:
+#                 print(prgm_pt_dict[interpolant][inter].replace("wp interpolant =",  "wp interpolant-"+str(inter+1)+"="))
+#                 OutputFile2.write(prgm_pt_dict[interpolant][inter].replace("wp interpolant =",  "wp interpolant-"+str(inter+1)+"=")+"\n")
+#         print("---------------------------------------------------------------")
+#         OutputFile2.write("---------------------------------------------------------------\n")
+#         unique_interpolant=set(prgm_pt_dict[interpolant])
+# #        print(unique_interpolant)
+#         print("******************************************************************")
+#         OutputFile2.write("******************************************************************\n")
+#         print("The number of unique interpolants for program point: "+str(interpolant)+" is "+str(len(unique_interpolant)))
+#         OutputFile2.write("The number of unique interpolants for program point: "+str(interpolant)+" is "+str(len(unique_interpolant)))
+#         if len(unique_interpolant)!= len(prgm_pt_dict[interpolant]):
+#                 print("The Unique Interpolants are:")
+#                 OutputFile2.write("The Unique Interpolants are:\n")
+#                 uni_index=0
+#                 for uni_inter in unique_interpolant:
+#                             uni_index=uni_index+1
+#                             if "Simplified::" in uni_inter:
+#                                 print(uni_inter.replace("Simplified::", "wp interpolant-"+str(uni_index)+"="))
+#                                 OutputFile2.write(uni_inter.replace("Simplified::", "wp interpolant-"+str(uni_index)+"=")+"\n")
+#                             else:
+#                                 print(uni_inter.replace("wp interpolant =",  "wp interpolant-"+str(uni_index)+"="))
+#                                 OutputFile2.write(uni_inter.replace("wp interpolant =",  "wp interpolant-"+str(uni_index)+"=")+"\n")
+#         print("******************************************************************")
+#         OutputFile2.write("******************************************************************\n")
+#             
+# 
+# =============================================================================
