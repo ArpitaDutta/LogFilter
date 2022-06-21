@@ -34,9 +34,11 @@ def WP_Simplification(wpinterpolant):
             filtered_wp+=str(cell4[0:poscell])+str(cell4[poscell+2:])
         else:
             filtered_wp+=cell4
-    #print(filtered_wp+"\n")
     wpinterpolant=filtered_wp
-    wpinterpolant=wpinterpolant.replace("WPVar w32 ","").replace("w32 ","")#.replace("((","").replace(")))","))")
+# =============================================================================
+#     wpinterpolant=wpinterpolant.replace("WPVar w32 ","").replace("w32 ","")#.replace("((","").replace(")))","))")
+#     print("***Wp removed***",wpinterpolant+"\n")
+# =============================================================================
     #print(wpinterpolant+"\n")
 #==============================================================================
 #     w_cell1=wpinterpolant.split(":((")
