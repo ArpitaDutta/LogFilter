@@ -39,7 +39,7 @@ def WP_Simplification(wpinterpolant):
 #     wpinterpolant=wpinterpolant.replace("WPVar w32 ","").replace("w32 ","")#.replace("((","").replace(")))","))")
 #     print("***Wp removed***",wpinterpolant+"\n")
 # =============================================================================
-    #print(wpinterpolant+"\n")
+    print(wpinterpolant+"\n")
 #==============================================================================
 #     w_cell1=wpinterpolant.split(":((")
 #     new_wp_string=str(w_cell1[0])
@@ -68,18 +68,16 @@ def WP_Simplification(wpinterpolant):
 #==============================================================================
                 alias_dict_init[keyCell.strip()]=cell1.split(")")[0].strip()
             else:
-                keyCell=lastcell
                 lastcell=cell1.split(" ")[-1]
-        else:             
-                keyCell=lastcell
+        else: 
                 lastcell=cell1.split(" ")[-1]
                 
     for cell2 in alias_dict_init:
             if cell2+":" in wpinterpolant:
                 wpinterpolant=wpinterpolant.replace(cell2+":","")
             if cell2.strip()+")" in wpinterpolant:
-                wpinterpolant=wpinterpolant.replace(cell2+")",alias_dict_init[cell2])
-               
+                wpinterpolant=wpinterpolant.replace(cell2+")",alias_dict_init[cell2]+")")
+    print("**********",wpinterpolant)          
 # =============================================================================
 #     regExp = re.findall(r"\(([A-Za-z0-9_ ())]+)\)", "(Not (Eq 6 a32)(Eq 7 a112)(Not (Eq 3 a188)(Not (Eq 5 a146)(Not (Eq 11 a164))))");
 #     
@@ -111,9 +109,11 @@ def WP_Simplification(wpinterpolant):
             if cell5+":" in wpinterpolant:
                 wpinterpolant=wpinterpolant.replace(cell5+":","")
             if cell5.strip()+")" in wpinterpolant:
-                wpinterpolant=wpinterpolant.replace(cell5+")",alias_dict_second[cell5])          
+                wpinterpolant=wpinterpolant.replace(cell5+")",alias_dict_second[cell5]+")")          
     print("\n\n")
     print(wpinterpolant+"\n")
+    #correct till this point
+    print ("Correct till this point")
     wpinterpolant_ex=""
     print("Wp-interpolant: ", wpinterpolant1)
     for parts in wpinterpolant1:
