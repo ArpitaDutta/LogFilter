@@ -21,7 +21,9 @@ def Find_Extension(Sub_part):
         if len(stack)==0:
             return Sub_part[0:i+1]
 def WP_Simplification(wpinterpolant):
-    print(wpinterpolant+"\n")
+# =============================================================================
+#     print(wpinterpolant+"\n")
+# =============================================================================
     wpint=wpinterpolant.split("(WPVar w32 (")
     #print(wpint)
     filtered_wp=""
@@ -37,9 +39,13 @@ def WP_Simplification(wpinterpolant):
     wpinterpolant=filtered_wp
 # =============================================================================
 #     wpinterpolant=wpinterpolant.replace("WPVar w32 ","").replace("w32 ","")#.replace("((","").replace(")))","))")
+# =============================================================================
 #     print("***Wp removed***",wpinterpolant+"\n")
 # =============================================================================
-    print(wpinterpolant+"\n")
+# =============================================================================
+# =============================================================================
+#     print(wpinterpolant+"\n")
+# =============================================================================
 #==============================================================================
 #     w_cell1=wpinterpolant.split(":((")
 #     new_wp_string=str(w_cell1[0])
@@ -77,7 +83,7 @@ def WP_Simplification(wpinterpolant):
                 wpinterpolant=wpinterpolant.replace(cell2+":","")
             if cell2.strip()+")" in wpinterpolant:
                 wpinterpolant=wpinterpolant.replace(cell2+")",alias_dict_init[cell2]+")")
-    print("**********",wpinterpolant)          
+    #print("**********",wpinterpolant)          
 # =============================================================================
 #     regExp = re.findall(r"\(([A-Za-z0-9_ ())]+)\)", "(Not (Eq 6 a32)(Eq 7 a112)(Not (Eq 3 a188)(Not (Eq 5 a146)(Not (Eq 11 a164))))");
 #     
@@ -104,26 +110,32 @@ def WP_Simplification(wpinterpolant):
 #==============================================================================
         prevdata=cell3.split(")")[-1]
     
-    print(wpinterpolant)
+    #print(wpinterpolant)
     for cell5 in alias_dict_second:
             if cell5+":" in wpinterpolant:
                 wpinterpolant=wpinterpolant.replace(cell5+":","")
             if cell5.strip()+")" in wpinterpolant:
                 wpinterpolant=wpinterpolant.replace(cell5+")",alias_dict_second[cell5]+")")          
-    print("\n\n")
-    print(wpinterpolant+"\n")
-    #correct till this point
-    print ("Correct till this point")
+# =============================================================================
+#     print("\n\n")
+#     print(wpinterpolant+"\n")
+#     #correct till this point
+#     print ("Correct till this point")
+# =============================================================================
     wpinterpolant_ex=""
-    print("Wp-interpolant: ", wpinterpolant1)
-    for parts in wpinterpolant1:
-        parts_minute=parts.split(" ")
-        if re.search("N[0-9]*", parts_minute[-1]):
-            wpinterpolant_ex=wpinterpolant_ex+parts[0:len(parts)]            
-        else:
-            wpinterpolant_ex=wpinterpolant_ex+parts
+# =============================================================================
+#     print("Wp-interpolant: ", wpinterpolant1)
+#     for parts in wpinterpolant1:
+#         parts_minute=parts.split(" ")
+#         if re.search("N[0-9]*", parts_minute[-1]):
+#             wpinterpolant_ex=wpinterpolant_ex+parts[0:len(parts)]            
+#         else:
+#             wpinterpolant_ex=wpinterpolant_ex+parts
+# =============================================================================
     wpinterpolant_ex=wpinterpolant
-    print("********"+wpinterpolant_ex+"********\n")
+# =============================================================================
+#     print("********"+wpinterpolant_ex+"********\n")
+# =============================================================================
     if ":" in wpinterpolant:
         key_list=[]
         values_list=[]
@@ -137,7 +149,9 @@ def WP_Simplification(wpinterpolant):
     
     cond_list=re.findall("Not.\([A-Z,a-z]* [0-9]* [_|A-Z,a-z][A-Z,a-z,0-9,_]*\)|Not.\([A-Z,a-z]* [_|A-Z,a-z][A-Z,a-z,0-9,_]* [_|A-Z,a-z][A-Z,a-z,0-9,_]*\)|\([A-Z,a-z]* [0-9]* [_|A-Z,a-z][A-Z,a-z,0-9,_]*\)|\([A-Z,a-z]* [_|A-Z,a-z][A-Z,a-z,0-9,_]* [_|A-Z,a-z][A-Z,a-z,0-9,_]*\)|\([A-Z,a-z]* [_|A-Z,a-z][A-Z,a-z,0-9,_]*\)", wpinterpolant_ex)
     final_pred=""
-    print("****---****"+str(cond_list)+"****---****\n")
+# =============================================================================
+#     print("****---****"+str(cond_list)+"****---****\n")
+# =============================================================================
     for cond in cond_list:
         if "Not (" in cond:
             condFmtlist=cond.replace("Not (","(").replace("(","").replace(")","").split(" ")
@@ -176,6 +190,9 @@ def WP_Simplification(wpinterpolant):
                     final_pred=final_pred+"And ("+condFmtlist[0]+" "+condFmtlist[1]+") "
                 else:
                     final_pred=final_pred+"And ("+condFmtlist[2]+" "+condFmtlist[0]+" "+condFmtlist[1]+") "
+# =============================================================================
+#     print("Simplified::["+str(final_pred+"]"))
+# =============================================================================
     return "Simplified::["+str(final_pred+"]")
 
 InputFile1 = open(sys.argv[1], "r")
@@ -191,11 +208,11 @@ setConContent=0
 setConGlobal=0
 setConLocal=0
 for i in InputFile1:
-#    print i
 #==============================================================================
 #     if "concretely-addressed store = [" in i and "]" not in i:
 #         print i
 #==============================================================================
+    print(i)
     if ("warning: " in i or "KLEE:" in i) and "Subsumption Table Entry" not in i and "KLEE: done:" not in i and "KLEE: **********" not in i and "Storing entry for Node #1," not in i:
         continue
     elif " Location:" in i or "antecedent:" in i or "consequent:" in i or "." in i:
